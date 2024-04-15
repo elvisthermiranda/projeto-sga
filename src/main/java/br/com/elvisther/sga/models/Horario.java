@@ -1,6 +1,5 @@
 package br.com.elvisther.sga.models;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,10 +22,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "horarios")
 @Getter @Setter
-public class Horario implements Serializable
+public class Horario
 {
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

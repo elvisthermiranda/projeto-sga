@@ -1,7 +1,5 @@
 package br.com.elvisther.sga.models;
 
-import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -18,10 +16,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "papel_permissoes")
 @Getter @Setter
-public class PapelPermissao implements Serializable
+public class PapelPermissao
 {
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

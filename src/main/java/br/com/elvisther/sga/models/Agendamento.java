@@ -1,6 +1,5 @@
 package br.com.elvisther.sga.models;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -20,10 +19,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "agendamentos")
 @Getter @Setter
-public class Agendamento implements Serializable
+public class Agendamento
 {
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

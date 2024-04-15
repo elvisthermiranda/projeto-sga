@@ -1,7 +1,5 @@
 package br.com.elvisther.sga.models;
 
-import java.io.Serializable;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -16,10 +14,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "contador")
 @Getter @Setter
-public class Contador implements Serializable
+public class Contador
 {
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

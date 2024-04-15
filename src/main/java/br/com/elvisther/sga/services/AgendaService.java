@@ -1,10 +1,10 @@
 package br.com.elvisther.sga.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import br.com.elvisther.sga.enums.Ativo;
 import br.com.elvisther.sga.http.requests.AgendaStoreRequest;
 import br.com.elvisther.sga.http.requests.AgendaUpdateRequest;
 import br.com.elvisther.sga.models.Agenda;
@@ -24,7 +24,7 @@ public class AgendaService
 	private final UnidadeRepository unidadeRepository;
 	private final ServicoRepository servicoRepository;
 	
-	public Agenda findById(Long id) throws ResourceNotFoundException
+	public Agenda findById(Long id)
 	{
 		return this.agendaRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Agenda não encontrada."));
@@ -35,7 +35,7 @@ public class AgendaService
 		return this.agendaRepository.findAll();
 	}
 	
-	public Agenda create(AgendaStoreRequest request) throws ResourceNotFoundException
+	public Agenda create(AgendaStoreRequest request)
 	{
 		Unidade unidade = this.unidadeRepository.findById(request.getUnidadeId())
 				.orElseThrow(() -> new ResourceNotFoundException("A unidade informada não existe!"));
@@ -51,16 +51,19 @@ public class AgendaService
 		agenda.setMesAno(request.getMesAno());
 		agenda.setUnidade(unidade);
 		agenda.setServico(servico);
-		agenda.setAtivo(Ativo.NAO.getValor());
+		agenda.setAtivo(request.getAtivo());
+		agenda.setCreatedAt(LocalDateTime.now());
+		agenda.setUpdatedAt(LocalDateTime.now());
 		
 		return this.agendaRepository.save(agenda);
 	}
 	
-	public void updateStatus(Long id, AgendaUpdateRequest request) throws ResourceNotFoundException
+	public void updateStatus(Long id, AgendaUpdateRequest request)
 	{
 		Agenda agenda = this.findById(id);
 		
-		agenda.setAtivo(Ativo.valueOf(request.getAtivo()).getValor());
+		agenda.setAtivo(request.getAtivo());
+		agenda.setUpdatedAt(LocalDateTime.now());
 		
 		this.agendaRepository.save(agenda);
 	}

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.elvisther.sga.http.requests.AgendaStoreRequest;
 import br.com.elvisther.sga.http.requests.AgendaUpdateRequest;
+import br.com.elvisther.sga.http.resources.AgendaResource;
 import br.com.elvisther.sga.models.Agenda;
 import br.com.elvisther.sga.services.AgendaService;
 import jakarta.validation.Valid;
@@ -37,14 +38,16 @@ public class AgendaController
 	@PostMapping
 	public ResponseEntity<?> store(@Valid @RequestBody AgendaStoreRequest request) throws Exception
 	{
-		//Agenda agenda = this.agendaService.create(request);
-		return ResponseEntity.status(HttpStatus.CREATED).body(null);
+		AgendaResource resource = new AgendaResource(this.agendaService.create(request));
+		return ResponseEntity.status(HttpStatus.CREATED).body(resource);
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> show(@PathVariable Long id)
 	{
-		return ResponseEntity.ok().body(this.agendaService.findById(id));
+		Agenda agenda = this.agendaService.findById(id);
+		AgendaResource agendaResource =  new AgendaResource(agenda, agenda.getUnidade(), agenda.getServico());
+		return ResponseEntity.ok().body(agendaResource);
 	}
 	
 	@PutMapping("/{id}/update-status")

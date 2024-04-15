@@ -1,6 +1,5 @@
 package br.com.elvisther.sga.models;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,10 +19,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "papeis")
 @Getter @Setter
-public class Papel implements Serializable
+public class Papel
 {
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

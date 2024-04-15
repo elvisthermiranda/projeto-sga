@@ -1,7 +1,5 @@
 package br.com.elvisther.sga.models;
 
-import java.io.Serializable;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,10 +11,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "permissoes")
 @Getter @Setter
-public class Permissao implements Serializable
+public class Permissao
 {
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

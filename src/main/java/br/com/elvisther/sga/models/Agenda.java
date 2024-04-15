@@ -1,6 +1,5 @@
 package br.com.elvisther.sga.models;
 
-import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,10 +23,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "agenda")
 @Getter @Setter
-public class Agenda implements Serializable
+public class Agenda
 {
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -51,7 +48,7 @@ public class Agenda implements Serializable
 	@JsonBackReference
 	private List<Horario> horarios;
 
-	private Character ativo;
+	private String ativo;
 	
 	@Column(name = "created_at")
 	private LocalDateTime createdAt;

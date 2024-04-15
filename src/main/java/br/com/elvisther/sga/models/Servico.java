@@ -1,6 +1,5 @@
 package br.com.elvisther.sga.models;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,10 +19,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "servicos")
 @Getter @Setter
-public class Servico implements Serializable
-{	
-	private static final long serialVersionUID = 1L;
-	
+public class Servico
+{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -37,9 +34,6 @@ public class Servico implements Serializable
 	
 	@Column(name = "updated_at")
 	private LocalDateTime updatedAt;
-	
-	@Column(name = "deleted_at")
-	private LocalDateTime deleteAt;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "servico")
 	@JsonBackReference

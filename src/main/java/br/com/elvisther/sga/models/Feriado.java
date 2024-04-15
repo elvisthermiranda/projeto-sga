@@ -1,6 +1,5 @@
 package br.com.elvisther.sga.models;
 
-import java.io.Serializable;
 import java.sql.Date;
 
 import jakarta.persistence.Entity;
@@ -14,10 +13,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "feriados")
 @Getter @Setter
-public class Feriado implements Serializable
+public class Feriado
 {
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

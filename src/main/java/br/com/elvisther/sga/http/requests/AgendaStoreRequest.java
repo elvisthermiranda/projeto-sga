@@ -19,5 +19,5 @@ public class AgendaStoreRequest
 	private Long unidadeId;
 	
 	@NotNull(message = "O status não pode ser nulo")
-	private Character ativo;
+	private String ativo;
 }

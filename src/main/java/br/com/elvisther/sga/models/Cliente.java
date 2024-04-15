@@ -1,6 +1,5 @@
 package br.com.elvisther.sga.models;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -15,10 +14,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "clientes")
 @Getter @Setter
-public class Cliente implements Serializable
-{	
-	private static final long serialVersionUID = 1L;
-	
+public class Cliente
+{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
