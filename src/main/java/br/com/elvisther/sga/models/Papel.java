@@ -14,13 +14,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
 @Entity
 @Table(name = "papeis")
-public class Papel implements Serializable {
-
+@Getter @Setter
+public class Papel implements Serializable
+{
 	private static final long serialVersionUID = 1L;
 	
 	@Id

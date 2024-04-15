@@ -9,13 +9,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
 @Entity
 @Table(name = "departamentos")
-public class Departamento implements Serializable {
-
+@Getter @Setter
+public class Departamento implements Serializable
+{
 	private static final long serialVersionUID = 1L;
 
 	@Id

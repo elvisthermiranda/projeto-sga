@@ -12,13 +12,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter @Setter
 @Entity
 @Table(name = "usuario_papel")
-public class UsuarioPapel implements Serializable {
-
+public class UsuarioPapel implements Serializable
+{
 	private static final long serialVersionUID = 1L;
 
 	@Id

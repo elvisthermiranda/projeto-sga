@@ -14,8 +14,8 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "usuarios")
-public class Usuario implements Serializable {
-
+public class Usuario implements Serializable
+{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -34,5 +34,4 @@ public class Usuario implements Serializable {
 	
 	@Column(name = "updated_at")
 	private LocalDateTime updatedAt;
-	
 }

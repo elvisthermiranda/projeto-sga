@@ -14,13 +14,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
 @Entity
 @Table(name = "agendamentos")
-public class Agendamento implements Serializable {
-	
+@Getter @Setter
+public class Agendamento implements Serializable
+{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -39,8 +40,11 @@ public class Agendamento implements Serializable {
 	@Column(name = "created_at")
 	private LocalDateTime createdAt;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Horario.class)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Horario.class)
 	@JsonManagedReference
 	private Horario horario;
 
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Agenda.class)
+	@JsonManagedReference
+	private Agenda agenda;
 }

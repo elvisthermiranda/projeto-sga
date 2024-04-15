@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/api/v1/servico")
-public class ServicoController {
+public class ServicoController
+{
 
 }

@@ -18,13 +18,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
 @Entity
 @Table(name = "agenda")
-public class Agenda implements Serializable {
-
+@Getter @Setter
+public class Agenda implements Serializable
+{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -34,11 +35,11 @@ public class Agenda implements Serializable {
 	@Column(name = "mes_ano")
 	private Date mesAno;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Servico.class)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Servico.class)
 	@JsonManagedReference
 	private Servico servico;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Unidade.class)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Unidade.class)
 	@JsonManagedReference
 	private Unidade unidade;
 	

@@ -2,17 +2,17 @@ package br.com.elvisther.sga.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.elvisther.sga.models.Servico;
 import br.com.elvisther.sga.repositories.ServicoRepository;
+import lombok.AllArgsConstructor;
 
 @Service
-public class ServicoService {
-	
-	@Autowired
-	private ServicoRepository servicoRepository;
+@AllArgsConstructor
+public class ServicoService
+{
+	private final ServicoRepository servicoRepository;
 	
 	public List<Servico> findAll()
 	{

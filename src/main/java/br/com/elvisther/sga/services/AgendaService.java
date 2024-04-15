@@ -2,7 +2,6 @@ package br.com.elvisther.sga.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.elvisther.sga.enums.Ativo;
@@ -14,23 +13,21 @@ import br.com.elvisther.sga.models.Unidade;
 import br.com.elvisther.sga.repositories.AgendaRepository;
 import br.com.elvisther.sga.repositories.ServicoRepository;
 import br.com.elvisther.sga.repositories.UnidadeRepository;
+import br.com.elvisther.sga.services.exceptions.ResourceNotFoundException;
+import lombok.AllArgsConstructor;
 
 @Service
-public class AgendaService {
+@AllArgsConstructor
+public class AgendaService
+{
+	private final AgendaRepository agendaRepository;
+	private final UnidadeRepository unidadeRepository;
+	private final ServicoRepository servicoRepository;
 	
-	@Autowired
-	private AgendaRepository agendaRepository;
-	
-	@Autowired
-	private UnidadeRepository unidadeRepository;
-	
-	@Autowired
-	private ServicoRepository servicoRepository;
-	
-	public Agenda findById(Long id) throws Exception
+	public Agenda findById(Long id) throws ResourceNotFoundException
 	{
 		return this.agendaRepository.findById(id)
-				.orElseThrow(() -> new Exception("Agenda não encontrada."));
+				.orElseThrow(() -> new ResourceNotFoundException("Agenda não encontrada."));
 	}
 	
 	public List<Agenda> findAll()
@@ -38,16 +35,16 @@ public class AgendaService {
 		return this.agendaRepository.findAll();
 	}
 	
-	public Agenda create(AgendaStoreRequest request) throws Exception
+	public Agenda create(AgendaStoreRequest request) throws ResourceNotFoundException
 	{
 		Unidade unidade = this.unidadeRepository.findById(request.getUnidadeId())
-				.orElseThrow(() -> new Exception("A unidade informada não existe!"));
+				.orElseThrow(() -> new ResourceNotFoundException("A unidade informada não existe!"));
 		
 		Servico servico = this.servicoRepository.findById(request.getServicoId())
-				.orElseThrow(() -> new Exception("O Serviço informado não existe!"));
+				.orElseThrow(() -> new ResourceNotFoundException("O Serviço informado não existe!"));
 		
 		if (this.agendaRepository.existsByUnidadeIdAndServicoIdAndMesAno(unidade.getId(), servico.getId(), request.getMesAno())) {
-			throw new Exception("Já existe uma agenda para esta unidade, serviço, mês e ano.");
+			throw new ResourceNotFoundException("Já existe uma agenda para esta unidade, serviço, mês e ano.");
 		}
 		
 		Agenda agenda = new Agenda();
@@ -59,7 +56,7 @@ public class AgendaService {
 		return this.agendaRepository.save(agenda);
 	}
 	
-	public void updateStatus(Long id, AgendaUpdateRequest request) throws Exception
+	public void updateStatus(Long id, AgendaUpdateRequest request) throws ResourceNotFoundException
 	{
 		Agenda agenda = this.findById(id);
 		
