@@ -11,17 +11,17 @@ public class ServicoResource
     private Long id;
     private String nome;
     private String descricao;
-    private Character ativo;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private String ativo;
+    private LocalDateTime created_at;
+    private LocalDateTime updated_at;
 
     public ServicoResource(Servico servico)
     {
         this.id = servico.getId();
         this.nome = servico.getNome();
         this.descricao = servico.getDescricao();
-        this.ativo = servico.getAtivo();
-        this.createdAt = servico.getCreatedAt();
-        this.updatedAt = servico.getUpdatedAt();
+        this.ativo = servico.getAtivo() == "S" ? "Sim": "Não";
+        this.created_at = servico.getCreatedAt();
+        this.updated_at = servico.getUpdatedAt();
     }
 }

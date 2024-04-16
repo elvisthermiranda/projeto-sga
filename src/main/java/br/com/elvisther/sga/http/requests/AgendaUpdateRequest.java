@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class AgendaUpdateRequest
 {
-	@NotNull(message = "O status não pode ser nulo")
-	@Pattern(regexp = "S|N|s|n", message = "Valor inválido para status")
+	@NotNull(message = "O status não pode ser nulo.")
+	@Pattern(regexp = "S|N|s|n", message = "Valor inválido para status.")
 	private String ativo;
 }

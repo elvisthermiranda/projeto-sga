@@ -1,7 +1,7 @@
 package br.com.elvisther.sga.models;
 
 import java.util.List;
-import java.util.stream.Collectors;
+// import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -32,16 +32,16 @@ public class Papel
 	@JsonBackReference
 	private List<PapelPermissao> papelPermissoes;
 	
-	public List<Permissao> getPermissoes()
-	{
-		return this.papelPermissoes.stream()
-					.map(PapelPermissao::getPermissao)
-					.collect(Collectors.toList());
-	}
+	// public List<Permissao> getPermissoes()
+	// {
+	// 	return this.papelPermissoes.stream()
+	// 				.map(PapelPermissao::getPermissao)
+	// 				.collect(Collectors.toList());
+	// }
 	
-	public Boolean temPermissao(String nome)
-	{
-		return this.getPermissoes().stream()
-			.anyMatch(permissao -> permissao.getNome().equals(nome));
-	}
+	// public Boolean temPermissao(String nome)
+	// {
+	// 	return this.getPermissoes().stream()
+	// 		.anyMatch(permissao -> permissao.getNome().equals(nome));
+	// }
 }

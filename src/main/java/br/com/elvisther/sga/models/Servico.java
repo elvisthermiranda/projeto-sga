@@ -26,7 +26,7 @@ public class Servico
 	private Long id;
 	private String nome;
 	private String descricao;
-	private Character ativo;
+	private String ativo;
 	private Integer peso;
 	
 	@Column(name = "created_at")
