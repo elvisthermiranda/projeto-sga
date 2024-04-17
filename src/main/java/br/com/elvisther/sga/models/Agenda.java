@@ -42,10 +42,6 @@ public class Agenda
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "agenda")
 	@JsonBackReference
-	private List<Agendamento> agendamentos;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "agenda")
-	@JsonBackReference
 	private List<Horario> horarios;
 
 	private String ativo;

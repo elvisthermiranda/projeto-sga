@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.elvisther.sga.models.Agendamento;
 import br.com.elvisther.sga.repositories.AgendamentoRepository;
+import br.com.elvisther.sga.services.exceptions.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -17,5 +18,10 @@ public class AgendamentoService
 	public List<Agendamento> findAll()
 	{
 		return this.agendamentoRepository.findAll();
+	}
+
+	public Agendamento find(Long id)
+	{
+		return this.agendamentoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Agendamento não encontrado."));
 	}
 }

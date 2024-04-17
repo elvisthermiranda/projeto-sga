@@ -4,8 +4,6 @@ import java.sql.Date;
 import java.time.LocalDateTime;
 
 import br.com.elvisther.sga.models.Agenda;
-import br.com.elvisther.sga.models.Servico;
-import br.com.elvisther.sga.models.Unidade;
 import lombok.Data;
 
 @Data
@@ -24,11 +22,6 @@ public class AgendaResource
         this.ativo = agenda.getAtivo() == "S" ? "Sim": "Não";
         this.criado_em = agenda.getCreatedAt();
         this.ultima_atualizacao = agenda.getUpdatedAt();
-    }
-
-    public AgendaResource(Agenda agenda, Unidade unidade, Servico servico)
-    {
-        this(agenda);
         this.unidade = new UnidadeResource(agenda.getUnidade());
         this.servico = new ServicoResource(agenda.getServico());
     }

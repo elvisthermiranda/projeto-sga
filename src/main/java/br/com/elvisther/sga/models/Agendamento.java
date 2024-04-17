@@ -25,23 +25,20 @@ public class Agendamento
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String email;
-	private String celular;
-	private String cpf;
-	private String nome;
+	@Column(nullable = false)
 	private String protocolo;
 	
-	@Column(name = "data_triagem")
+	@Column(name = "data_triagem", nullable = true)
 	private LocalDateTime dataTriagem;
 	
-	@Column(name = "created_at")
+	@Column(name = "created_at", nullable = false)
 	private LocalDateTime createdAt;
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Horario.class)
 	@JsonManagedReference
 	private Horario horario;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Agenda.class)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Cliente.class)
 	@JsonManagedReference
-	private Agenda agenda;
+	private Cliente cliente;
 }
